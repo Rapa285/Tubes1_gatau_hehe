@@ -1,7 +1,6 @@
 from typing import Tuple
 from typing import Optional
 
-
 from game.logic.base import BaseLogic
 from game.models import GameObject, Board, Position
 from ..util import get_direction
@@ -13,21 +12,25 @@ from math import sqrt
 class TimeoutException(Exception):  # Custom exception class
     pass
 
+
 def calculate_path_to_diamond(board_bot: GameObject, board: Board, diamonds: int):
     # Variables
+    global temp_next_diamond
     target = []
     current_position = board_bot.position
     visited_diamonds = set()
+    timeout_occurred = False  # Add a flag to track if a timeout occurred
 
-    # Find the (5  - current diamonds) the closest diamonds
+    # Find the best path
     while len(target) < 5 - diamonds:
         # Loop reset
         next_diamond = None
 
-        # Find the closest diamond for every diamond
-        # limit this to 0.07 seconds
+        # Find the highest of all diamond acquired / moves
+        # limit this to minimum delay seconds
 
-        timer = threading.Timer(board.minimum_delay_between_moves / 1000, lambda: (_ for _ in ()).throw(TimeoutException()))
+        timer = threading.Timer(1,
+                                lambda: (_ for _ in ()).throw(TimeoutException()))
         timer.start()
         try:
             for diamond in board.diamonds:
@@ -39,19 +42,21 @@ def calculate_path_to_diamond(board_bot: GameObject, board: Board, diamonds: int
 
                 if not next_diamond:
                     next_diamond = diamond
+                    temp_next_diamond = (diamond.properties.points / sqrt((diamond.position.x - current_position.x) ** 2
+                                                                          + (
+                                                                                      diamond.position.y - current_position.y) ** 2
+                                                                          ))
                     continue
 
-                if (
-                    sqrt(
-                        (diamond.position.x - current_position.x) ** 2
-                        + (diamond.position.y - current_position.y) ** 2
-                    )
-                    < sqrt(
-                        (next_diamond.position.x - current_position.x) ** 2
-                        + (next_diamond.position.y - current_position.y) ** 2
-                    )
-                ):
+                temp_point = (diamond.properties.points /
+                              sqrt(
+                                  (diamond.position.x - current_position.x) ** 2
+                                  + (diamond.position.y - current_position.y) ** 2
+                              ))
+                if temp_point > temp_next_diamond:
                     next_diamond: GameObject = diamond
+                    temp_next_diamond = temp_point
+
             if (visited_diamonds is None) or (next_diamond is None):
                 break
 
@@ -59,12 +64,14 @@ def calculate_path_to_diamond(board_bot: GameObject, board: Board, diamonds: int
             target.append(next_diamond.position)
 
         except TimeoutException:
-            print(target)
-            return target  # If timeout exception is raised, break the loop
+            timeout_occurred = True  # Set the flag to True if a timeout occurs
+            break  # Break the loop if a timeout occurs
         finally:
             timer.cancel()  # stop the timer
 
     print(target)
+    if timeout_occurred:  # If a timeout occurred, print a message
+        print("A timeout occurred during the execution.")
     return target
 
 

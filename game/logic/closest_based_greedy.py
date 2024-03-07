@@ -25,7 +25,7 @@ def calculate_path_to_diamond(board_bot: GameObject, board: Board, diamonds: int
         next_diamond = None
 
         # Find the closest diamond for every diamond
-        # limit this to 0.07 seconds
+        # limit this to minimum delay seconds
 
         timer = threading.Timer(board.minimum_delay_between_moves / 1000, lambda: (_ for _ in ()).throw(TimeoutException()))
         timer.start()
