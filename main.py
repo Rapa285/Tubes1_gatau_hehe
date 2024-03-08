@@ -7,8 +7,9 @@ from game.board_handler import BoardHandler
 from game.bot_handler import BotHandler
 from game.logic.random import RandomLogic
 from game.logic.base import BaseLogic
-from game.logic.closest_based_greedy import Main as cbg
-from game.logic.lowest_time_to_diamond import Main as lwd
+from game.logic.lowest_time_to_diamond import LTD as lwd
+from game.logic.lowest_time_to_diamond import CBG as cbg
+
 
 init()
 BASE_URL = "http://localhost:3000/api"
