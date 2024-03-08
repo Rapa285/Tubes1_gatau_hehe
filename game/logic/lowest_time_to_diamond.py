@@ -3,7 +3,7 @@ from typing import Optional
 
 from game.logic.base import BaseLogic
 from game.models import GameObject, Board, Position
-from ..util import get_direction
+from .handler import get_direction
 
 import threading
 from math import sqrt
@@ -97,6 +97,7 @@ class Main(BaseLogic):
                 current_position.y,
                 self.goal_position.x,
                 self.goal_position.y,
+                board=board
             )
         #     If the bot has less than 5 diamonds, find the closest diamond
         else:
@@ -108,5 +109,6 @@ class Main(BaseLogic):
                 current_position.y,
                 min_paths[0].x,
                 min_paths[0].y,
+                board=board
             )
         return delta_x, delta_y
