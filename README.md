@@ -1,18 +1,13 @@
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+# 💎 Etimo Diamonds Greedy Bot
 
-# 💎 Etimo Diamonds 2
-
-Diamonds is a programming challenge. Program a bot and compete to get the highest score. For more information:
-
--   [Project Specification](https://docs.google.com/document/d/13cbmMVXviyu8eKQ6heqgDzt4JNNMeAZO/edit)
--   [Get Started with Diamonds](https://docs.google.com/document/d/1L92Axb89yIkom0b24D350Z1QAr8rujvHof7-kXRAp7c/edit)
+Bot untuk permainan Etimo Diamonds yang menggunakan strategi greedy. Greedy yang di implementasikan ada 2 yaitu greedy by closest distance dan greedy by biggest point / distance. Sangat disarankan untuk menggunakan point / distance dikarenakan lebih efisien dan bisa mendapatkan lebih banyak poin dibandingkan greedy by distance.
 
 ## Installing Dependencies 🔨
 
 1. Clone this repository and move to the root of this project's directory
 
     ```
-    git clone https://github.com/haziqam/tubes1-IF2110-bot-starter-pack.git
+    git clone https://github.com/Rapa285/Tubes1_gatau_hehe
     cd ./tubes1-IF2110-bot-starter-pack
     ```
 
@@ -63,3 +58,9 @@ This repository is adapted from https://github.com/Etimo/diamonds2
 Some code in this repository is adjusted to fix some issues in the original repository and to adapt to the requirements of Algorithm Strategies course (IF2211), Informatics Undergraduate Program, ITB.
 
 ©️ All rights and credits reserved to [Etimo](https://github.com/Etimo)
+
+## Contributor
+
+- [Muhammad Dzaki Arta (13522149)](https://github.com/TuanOnta)
+- [Muhammad Fauzan Azhim (13522153)](https://github.com/fauzanazz)
+- [Pradipta Rafa Mahesa (13522162)](https://github.com/Rapa285)

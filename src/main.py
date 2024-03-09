@@ -12,7 +12,7 @@ from game.logic.lowest_time_to_diamond import CBG as cbg
 
 
 init()
-BASE_URL = "http://localhost:3000/api"
+BASE_URL = "https://diamonds.etimo.se/api/"
 DEFAULT_BOARD_ID = 1
 CONTROLLERS = {
     "Random": RandomLogic,
@@ -185,7 +185,7 @@ while True:
             "Invalid move will be ignored."
             + f" Your move: ({delta_x}, {delta_y}). Your position: ({board_bot.position.x}, {board_bot.position.y})",
         )
-        sleep((move_delay) * time_factor)
+        sleep(move_delay * time_factor)
         continue
 
     try:
@@ -205,7 +205,7 @@ while True:
 
     # Don't spam the board more than it allows!
     # sleep(move_delay * time_factor)
-    sleep((move_delay) * time_factor )
+    sleep(move_delay * time_factor)
 
 
 ###############################################################################

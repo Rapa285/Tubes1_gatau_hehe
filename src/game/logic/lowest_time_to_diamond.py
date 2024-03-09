@@ -244,7 +244,7 @@ def last_deposit(time_left,delay, bb : GameObject,):
     base = bb.properties.base
     curr_pos = bb.position
     distance_to_base = abs(base.x - curr_pos.x) + abs(base.y - curr_pos.y)
-    time_to_base = delay*distance_to_base
+    time_to_base = delay*distance_to_base *10
     if time_left - time_to_base <=  1000:
         return True
     else:
