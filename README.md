@@ -8,7 +8,7 @@ Bot untuk permainan Etimo Diamonds yang menggunakan strategi greedy. Greedy yang
 
     ```
     git clone https://github.com/Rapa285/Tubes1_gatau_hehe
-    cd ./tubes1-IF2110-bot-starter-pack
+    cd ./Tubes1_gatau_hehe
     ```
 
 2. Install dependencies
